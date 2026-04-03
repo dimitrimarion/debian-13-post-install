@@ -187,3 +187,12 @@ gh auth login
 
 echo "disable power management on lid switch"
 echo " uncomment #HandleLidSwitch=ignore in /etc/systemd/logind.conf"
+
+# Chrome
+wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+sudo apt install ./google-chrome-stable_current_amd64.deb -y
+sudo updates-alternatives --set x-www-browser /usr/bin/google-chrome-stable
+
+# system wide darkmode
+# chrome
+# nextcloud
