@@ -187,7 +187,8 @@ gh auth login
 
 # Chrome
 wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-sudo apt install ./google-chrome-stable_current_amd64.deb -y
+sudo mv google-chrome-stable_current_amd64.deb /tmp
+sudo apt install -y /tmp/google-chrome-stable_current_amd64.deb 
 sudo updates-alternatives --set x-www-browser /usr/bin/google-chrome-stable
 
 sudo apt install -y nextcloud-desktop
