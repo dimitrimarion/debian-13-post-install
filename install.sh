@@ -28,7 +28,6 @@ mkdir ~/Desktop
 mkdir ~/Templates
 mkdir ~/Public
 
-# TODO: configure git
 # TODO: show volume indicator with keyboard
 # TODO: font
 # TODO: laptop power management
@@ -95,7 +94,7 @@ cp config/mimeapps.list ~/.config
 # mail
 # gmail sign in with app passwords: https://support.google.com/mail/answer/185833?hl=en
 #sudo apt install -y sylpheed sylpheed-plugins
-sudo apt install thunderbird
+sudo apt install -y thunderbird
 
 # pdf
 sudo apt install -y zathura
@@ -124,14 +123,14 @@ sudo usermod -aG docker $USER
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.4/install.sh | bash
 
 # vscode
-sudo apt-get install wget gpg
+sudo apt install -y wget gpg
 wget -qO- https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg
 sudo install -D -o root -g root -m 644 microsoft.gpg /usr/share/keyrings/microsoft.gpg
 rm -f microsoft.gpg
 sudo cp config/vscode.sources /etc/apt/sources.list.d/
-sudo apt install apt-transport-https
+sudo apt install -y apt-transport-https
 sudo apt update
-sudo apt install code # or code-insiders
+sudo apt install -y code # or code-insiders
 
 
 
@@ -181,20 +180,18 @@ git config --global init.defaultBranc "master"
 	&& sudo mkdir -p -m 755 /etc/apt/sources.list.d \
 	&& echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" | sudo tee /etc/apt/sources.list.d/github-cli.list > /dev/null \
 	&& sudo apt update \
-	&& sudo apt install gh -y
+	&& sudo apt install -y gh
 
 gh auth login
 
-echo "disable power management on lid switch"
-echo " uncomment #HandleLidSwitch=ignore in /etc/systemd/logind.conf"
 
 # Chrome
 wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
 sudo apt install ./google-chrome-stable_current_amd64.deb -y
 sudo updates-alternatives --set x-www-browser /usr/bin/google-chrome-stable
 
-sudo apt install nextcloud-desktop
+sudo apt install -y nextcloud-desktop
 
-# system wide darkmode
-# chrome
-# nextcloud
+echo "disable power management on lid switch"
+echo " uncomment #HandleLidSwitch=ignore in /etc/systemd/logind.conf"
+
