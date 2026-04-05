@@ -193,6 +193,11 @@ sudo updates-alternatives --set x-www-browser /usr/bin/google-chrome-stable
 
 sudo apt install -y nextcloud-desktop
 
+# firewall
+sudo apt install -y ufw
+sudo ufw enable
+
 echo "disable power management on lid switch"
 echo " uncomment #HandleLidSwitch=ignore in /etc/systemd/logind.conf"
+
 
