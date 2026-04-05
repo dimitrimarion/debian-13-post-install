@@ -52,7 +52,7 @@ curl -OL https://github.com/ryanoasis/nerd-fonts/releases/download/v3.4.0/Hack.z
 mkdir -p ~/.local/share/fonts
 unzip Hack.zip -d ~/.local/share/fonts/
 fc-cache
-sudo apt install fonts-noto
+sudo apt install -y fonts-noto
 
 
 # st terminal
