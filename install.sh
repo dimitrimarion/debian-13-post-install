@@ -28,7 +28,10 @@ mkdir ~/Desktop
 mkdir ~/Templates
 mkdir ~/Public
 
-# TODO: show volume indicator with keyboard
+# volume indicator with Fn keys
+sudo apt install -y dunst
+sudo cp bin/volume /usr/local/bin/volume
+sudo chmod +x /usr/local/bin/volume
 # TODO: font
 # TODO: laptop power management
 # TODO: printer

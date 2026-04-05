@@ -1,0 +1,29 @@
+#!/bin/sh
+
+case "$1" in
+    up)
+        pactl set-sink-volume @DEFAULT_SINK@ +10%
+        ;;
+    down)
+        pactl set-sink-volume @DEFAULT_SINK@ -10%
+        ;;
+    mute)
+        pactl set-sink-mute @DEFAULT_SINK@ toggle
+        ;;
+    mic-mute)
+        pactl set-source-mute @DEFAULT_SOURCE@ toggle
+        ;;
+    *)
+        echo "Usage: volume up|down|mute|mic-mute" >&2
+        exit 1
+        ;;
+esac
+
+MUTE=$(pactl get-sink-mute @DEFAULT_SINK@ | grep -c "yes")
+VOL=$(pactl get-sink-volume @DEFAULT_SINK@ | grep -oP '\d+%' | head -1 | tr -d '%')
+
+if [ "$MUTE" -eq 1 ]; then
+    dunstify -a "volume" -u low -r 9999 -h int:value:0 "Volume: muted"
+else
+    dunstify -a "volume" -u low -r 9999 -h int:value:"$VOL" "Volume: ${VOL}%"
+fi
